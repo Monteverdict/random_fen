@@ -53,7 +53,6 @@ def generate_fen(pieces_old):
     pieces_dict = {random_squares[i]: pieces[i] for i in range(len(pieces))}
     pawns_dict = {random_squares_pawns[i]: pawns[i] for i in range(len(pawns))}
     pieces_dict.update(pawns_dict)
-    print(pieces_dict)
     placed = []
     temp = []
     final = []
