@@ -49,20 +49,18 @@ def generate_fen(pieces_old):
         random_squares.sort()
         random_squares_pawns.sort()
         check = any(item in random_squares for item in random_squares_pawns)
-        print(random_squares)
-        print(random_squares_pawns)
-        print()
-    pieces_dic = {random_squares[i]: pieces[i] for i in range(len(pieces))}
-    pawns_dic = {random_squares_pawns[i]: pawns[i] for i in range(len(pawns))}
-    pieces_dic.update(pawns_dic)
-    print(pieces_dic)
+
+    pieces_dict = {random_squares[i]: pieces[i] for i in range(len(pieces))}
+    pawns_dict = {random_squares_pawns[i]: pawns[i] for i in range(len(pawns))}
+    pieces_dict.update(pawns_dict)
+    print(pieces_dict)
     placed = []
     temp = []
     final = []
     visual = []
     for i in range(1, 65):
-        if i in pieces_dic.keys():
-            placed.append(pieces_dic[i])
+        if i in pieces_dict.keys():
+            placed.append(pieces_dict[i])
         else:
             placed.append(1)
     row_len = 0
@@ -95,7 +93,7 @@ def generate_fen(pieces_old):
                 final.append(sum(temp))
                 temp = []
             final.append(square)
-            visual.append(unicode_pieces[square])
+            visual.append(square)
             if row_len == 8:
                 odd = not odd
                 row_len = 0
@@ -201,7 +199,6 @@ def main():
         while n.isdecimal() is False:
             clear()
             print("How many random pieces would you like to generate, Kings excluded?")
-            print("(High numbers will most likely result in an invalid position)")
             n = input("> ").strip()
             if n.isdecimal() is True:
                 if int(n) > 32:
